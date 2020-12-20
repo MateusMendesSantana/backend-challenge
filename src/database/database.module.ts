@@ -9,9 +9,11 @@ import { Module } from '@nestjs/common';
       useFactory: (configService: ConfigService) => ({
         type: 'mysql',
         username: 'root',
+        host: configService.get<string>('MYSQL_ROOT_PASSWORD'),
+        database: 'db',
         password: configService.get<string>('MYSQL_ROOT_PASSWORD'),
         port: configService.get<number>('MYSQL_PORT'),
-        entities: ['dist/**/*.entity.js'],
+        entities: ['.build/**/*.entity.js'],
         synchronize: true
       }),
       inject: [ConfigService]
