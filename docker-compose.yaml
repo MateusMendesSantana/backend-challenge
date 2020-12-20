@@ -1,0 +1,44 @@
+version: '3.6'
+
+services:
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_ROOT_HOST=${MYSQL_ROOT_HOST}
+    ports:
+      - ${MYSQL_PORT}:${MYSQL_PORT}
+    volumes:
+      - type: bind
+        source: ./docker_db
+        target: /docker-entrypoint-initdb.d
+    expose:
+      - ${MYSQL_PORT}
+    networks:
+      - app-network
+    env_file: 
+      - .env
+
+  myapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm start
+    depends_on:
+      - mysql
+    ports:
+      - ${PORT}:${PORT}
+    expose:
+      - ${PORT}
+    links:
+      - mysql
+    networks:
+      - app-network
+    env_file: 
+      - .env
+
+networks:
+  app-network:
+    driver: bridge

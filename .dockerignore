@@ -1,0 +1,9 @@
+node_modules
+converage
+.git
+.tmp
+.vscode
+.github
+.env
+.build
+Dockerfile
