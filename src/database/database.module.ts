@@ -1,4 +1,5 @@
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { DatabaseService } from './database.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
 
@@ -9,7 +10,7 @@ import { Module } from '@nestjs/common';
       useFactory: (configService: ConfigService) => ({
         type: 'mysql',
         username: 'root',
-        host: configService.get<string>('MYSQL_ROOT_PASSWORD'),
+        host: configService.get<string>('MYSQL_HOST'),
         database: 'db',
         password: configService.get<string>('MYSQL_ROOT_PASSWORD'),
         port: configService.get<number>('MYSQL_PORT'),
@@ -19,6 +20,7 @@ import { Module } from '@nestjs/common';
       inject: [ConfigService]
     })
   ],
-  exports: [TypeOrmModule]
+  providers: [DatabaseService],
+  exports: [TypeOrmModule, DatabaseService]
 })
 export class DatabaseModule {}

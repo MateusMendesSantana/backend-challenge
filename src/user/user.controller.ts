@@ -3,7 +3,7 @@ import { UserCreateRequest } from './dtos/user-create-request.dto';
 import { UserService } from './user.service';
 
 @Controller('users')
-export class UsersController {
+export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()

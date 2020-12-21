@@ -1,4 +1,4 @@
-import { UsersController } from './user.controller';
+import { UserController } from './user.controller';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
@@ -19,7 +19,7 @@ import { User } from './user.entity';
     }),
     PassportModule
   ],
-  controllers: [UsersController],
+  controllers: [UserController],
   providers: [UserService],
   exports: [TypeOrmModule, UserService, PassportModule, JwtModule]
 })

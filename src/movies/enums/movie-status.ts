@@ -1,0 +1,5 @@
+export enum MovieStatus {
+  AVAILABLE = 'AVAILABLE',
+  RENTED = 'RENTED',
+  UNAVAILABLE = 'UNAVAILABLE'
+}
