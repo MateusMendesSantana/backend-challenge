@@ -1,4 +1,5 @@
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmConfigService } from './typeorm-config.service';
 import { DatabaseService } from './database.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
@@ -7,17 +8,8 @@ import { Module } from '@nestjs/common';
   imports: [
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'mysql',
-        username: 'root',
-        host: configService.get<string>('MYSQL_HOST'),
-        database: 'db',
-        password: configService.get<string>('MYSQL_ROOT_PASSWORD'),
-        port: configService.get<number>('MYSQL_PORT'),
-        entities: ['.build/**/*.entity.js'],
-        synchronize: true
-      }),
-      inject: [ConfigService]
+      inject: [ConfigService],
+      useClass: TypeOrmConfigService
     })
   ],
   providers: [DatabaseService],

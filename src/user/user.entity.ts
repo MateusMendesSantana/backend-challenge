@@ -6,6 +6,6 @@ export class User {
   id: number;
   @PrimaryColumn({ length: 120 })
   email: string;
-  @Column({ length: 40 })
+  @Column({ length: 200 })
   password: string;
 }

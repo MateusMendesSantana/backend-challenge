@@ -1,6 +1,5 @@
 import { DatabaseService } from '../src/database/database.service';
 import { Injectable } from '@nestjs/common';
-
 import * as Path from 'path';
 import * as fs from 'fs';
 
@@ -38,28 +37,23 @@ export class TestUtils {
    * Closes the database connections
    */
   async closeDbConnection() {
-    const connection = await this.databaseService.connection;
-    if (connection.isConnected) {
-      await (await this.databaseService.connection).close();
+    if (this.databaseService.connection.isConnected) {
+      await this.databaseService.connection.close();
     }
   }
 
   /**
    * Returns the entites of the database
    */
-  async getEntities() {
-    const entities = [];
-    (await (await this.databaseService.connection).entityMetadatas).forEach(x =>
-      entities.push({ name: x.name, tableName: x.tableName })
-    );
-    return entities;
+  getEntities() {
+    return this.databaseService.connection.entityMetadatas;
   }
 
   /**
    * Cleans the database and reloads the entries
    */
   async reloadFixtures() {
-    const entities = await this.getEntities();
+    const entities = this.getEntities();
     await this.cleanAll(entities);
     await this.loadAll(entities);
   }
