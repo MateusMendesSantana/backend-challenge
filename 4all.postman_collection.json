@@ -1,0 +1,858 @@
+{
+	"info": {
+		"_postman_id": "43dbc648-c566-4879-9ae8-58fd616f2793",
+		"name": "4all",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"mateusmendes@gmail.com\",\r\n    \"password\": \"123456\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Invalid email error",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"invalid-email\",\r\n    \"password\": \"123456\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "77"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4d-jYTTf+uHDpur+UVxEWx/0ijBEQ0\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Dec 2020 01:15:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 400,\n    \"message\": [\n        \"email must be an email\"\n    ],\n    \"error\": \"Bad Request\"\n}"
+				},
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mateusmendes@gmail.com\",\r\n    \"password\": \"123456\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "220"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"dc-BZqN/ydq3g47Cy4emWHTc3OHVV0\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Dec 2020 01:18:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"identifiers\": [\n        {\n            \"id\": 1,\n            \"email\": \"mateusmendes@gmail.com\"\n        }\n    ],\n    \"generatedMaps\": [\n        {\n            \"id\": 1\n        }\n    ],\n    \"raw\": {\n        \"fieldCount\": 0,\n        \"affectedRows\": 1,\n        \"insertId\": 1,\n        \"serverStatus\": 2,\n        \"warningCount\": 0,\n        \"message\": \"\",\n        \"protocol41\": true,\n        \"changedRows\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"mateusmendes@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Invalid password",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mateusmendes@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "96"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"60-3R4ohnHT6j+46+K/sepPM5CuZXY\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Dec 2020 01:26:32 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 401,\n    \"message\": \"The email address or password is incorrect\",\n    \"error\": \"Unauthorized\"\n}"
+				},
+				{
+					"name": "Invalid email",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"dad\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "77"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4d-jYTTf+uHDpur+UVxEWx/0ijBEQ0\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Dec 2020 01:25:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 400,\n    \"message\": [\n        \"email must be an email\"\n    ],\n    \"error\": \"Bad Request\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mateusmendes@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "149"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"95-uQoRWIxT42rOSBrCaPUmomz6zdE\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Dec 2020 01:27:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA4NjAwNDIyLCJleHAiOjE2MDg2MDQwMjJ9.xEvpC9AYxUS5pPS7eNQSYiqYujs2RSSCyRJQwfjHIwA\"\n}"
+				}
+			]
+		},
+		{
+			"name": "List movies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA4NjM5MTA3LCJleHAiOjE2MDg2NDI3MDd9.1BAqeoaoKtBYrwuRV_aEvQ23vHpv9bWg4n-phIMrLpM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1270"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4f6-/+ZTBCUEhy7eItb1WuQgigODtLQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Dec 2020 12:13:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Perdido em marte\",\n        \"director\": \"diretor1\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Passageiros\",\n        \"director\": \"diretor2\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Endgame\",\n        \"director\": \"diretor3\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Blade Runner, O CaÃ§ador de Androides\",\n        \"director\": \"Ridley Scott\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    },\n    {\n        \"id\": 5,\n        \"title\": \"Gone with the Wind\",\n        \"director\": \"diretor5\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    },\n    {\n        \"id\": 6,\n        \"title\": \"O MÃ¡gico de Oz\",\n        \"director\": \"diretor6\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    },\n    {\n        \"id\": 7,\n        \"title\": \"Casablanca\",\n        \"director\": \"diretor7\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    },\n    {\n        \"id\": 8,\n        \"title\": \"De volta pro futuro\",\n        \"director\": \"diretor8\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    }\n]"
+				},
+				{
+					"name": "Unauthorized without token",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2b-hGShxOkieaAVDloBubJVM+h58D8\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Dec 2020 12:10:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 401,\n    \"message\": \"Unauthorized\"\n}"
+				},
+				{
+					"name": "Success - With rented movie",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1267"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4f3-kUM36CX1GW0PvjLeXJXaSKc2VjY\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Dec 2020 12:27:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Perdido em marte\",\n        \"director\": \"diretor1\",\n        \"status\": \"RENTED\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:26:53.000Z\"\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Passageiros\",\n        \"director\": \"diretor2\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Endgame\",\n        \"director\": \"diretor3\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Blade Runner, O CaÃ§ador de Androides\",\n        \"director\": \"Ridley Scott\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    },\n    {\n        \"id\": 5,\n        \"title\": \"Gone with the Wind\",\n        \"director\": \"diretor5\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    },\n    {\n        \"id\": 6,\n        \"title\": \"O MÃ¡gico de Oz\",\n        \"director\": \"diretor6\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    },\n    {\n        \"id\": 7,\n        \"title\": \"Casablanca\",\n        \"director\": \"diretor7\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    },\n    {\n        \"id\": 8,\n        \"title\": \"De volta pro futuro\",\n        \"director\": \"diretor8\",\n        \"status\": \"AVAILABLE\",\n        \"createdAt\": \"2020-12-22T12:08:37.005Z\",\n        \"updatedAt\": \"2020-12-22T12:08:37.141Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Rent a movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA4NjM5MTA3LCJleHAiOjE2MDg2NDI3MDd9.1BAqeoaoKtBYrwuRV_aEvQ23vHpv9bWg4n-phIMrLpM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/movies/1/rents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"movies",
+						"1",
+						"rents"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Unauthorized - without token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/movies/1/rents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movies",
+								"1",
+								"rents"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2b-hGShxOkieaAVDloBubJVM+h58D8\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Dec 2020 12:25:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 401,\n    \"message\": \"Unauthorized\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/movies/1/rents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movies",
+								"1",
+								"rents"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "283"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"11b-MwzOR+bdRMBhhSxtQ4uy5kIptOk\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Dec 2020 12:26:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"identifiers\": [\n        {\n            \"id\": 1\n        }\n    ],\n    \"generatedMaps\": [\n        {\n            \"id\": 1,\n            \"status\": \"RENTED\",\n            \"createdAt\": \"2020-12-22T12:26:53.834Z\",\n            \"updatedAt\": \"2020-12-22T12:26:53.834Z\"\n        }\n    ],\n    \"raw\": {\n        \"fieldCount\": 0,\n        \"affectedRows\": 1,\n        \"insertId\": 1,\n        \"serverStatus\": 2,\n        \"warningCount\": 0,\n        \"message\": \"\",\n        \"protocol41\": true,\n        \"changedRows\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Return movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA4NjM5MTA3LCJleHAiOjE2MDg2NDI3MDd9.1BAqeoaoKtBYrwuRV_aEvQ23vHpv9bWg4n-phIMrLpM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/movies/1/rents/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"movies",
+						"1",
+						"rents",
+						"1"
+					]
+				},
+				"description": "set movie as available and rent status returned"
+			},
+			"response": [
+				{
+					"name": "Unauthorized, without token",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/movies/1/rents/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movies",
+								"1",
+								"rents",
+								"1"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "43"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2b-hGShxOkieaAVDloBubJVM+h58D8\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Dec 2020 12:33:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 401,\n    \"message\": \"Unauthorized\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/movies/1/rents/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movies",
+								"1",
+								"rents",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "208"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d0-M0CxiSKB6AX3Ognaykx3Owe28Dg\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Dec 2020 12:35:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"generatedMaps\": [],\n    \"raw\": {\n        \"fieldCount\": 0,\n        \"affectedRows\": 1,\n        \"insertId\": 0,\n        \"serverStatus\": 2,\n        \"warningCount\": 0,\n        \"message\": \"(Rows matched: 1  Changed: 1  Warnings: 0\",\n        \"protocol41\": true,\n        \"changedRows\": 1\n    },\n    \"affected\": 1\n}"
+				}
+			]
+		}
+	]
+}
